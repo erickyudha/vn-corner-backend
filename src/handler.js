@@ -9,6 +9,7 @@ const getRandomQuote = async (_, h) => {
       data: {
         title: data.items[0].title,
         quote: data.items[0].quote,
+        id: data.items[0].id,
       },
     });
     response.code(200);
@@ -21,8 +22,9 @@ const getRandomQuote = async (_, h) => {
       status: 'success',
       message: 'Something went wrong, fallback using default response...',
       data: {
-        title: "I guess she values her shampoo more than my life. That's not very flattering.",
-        quote: 'Kira☆Kira',
+        title: 'I thought math was about numbers and now we get all these words and crap like sin and tan! It makes no sense!',
+        quote: 'Fureraba ~Friend to Lover~',
+        id: 11856,
       },
     });
     response.code(200);

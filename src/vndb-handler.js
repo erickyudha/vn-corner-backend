@@ -1,5 +1,7 @@
 const VNDB = require('vndb-api');
 
+const DEBUG = false;
+
 async function vndbQuery(vndb, query) {
   return vndb.query(query)
     .then(response => {
@@ -18,6 +20,13 @@ async function vndbGetResponse(query) {
   return response;
 };
 
+async function testing() {
+  let quoteData = await vndbGetResponse('get quote basic (id>=1) {"results":1}');
+  console.log('quoteData: ', quoteData.items[0]);
+};
 
+if (DEBUG) {
+  testing();
+};
 
 module.exports = vndbGetResponse;
