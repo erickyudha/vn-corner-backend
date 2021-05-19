@@ -8,7 +8,7 @@ async function vndbQuery(vndb, query) {
 }
 
 async function vndbGetResponse(query) {
-  const vndb = new VNDB('clientname', {
+  const vndb = new VNDB('vncorner-app', {
     // optionally, override any connection options you need to here, like
     minConnection: 1,
     maxConnection: 10,
