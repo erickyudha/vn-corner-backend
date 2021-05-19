@@ -43,6 +43,7 @@ const getVnDataById = async (request, h) => {
       title: data.title,
       original: data.original,
       released: data.released,
+      image: data.image,
       description: data.description,
     }
 
