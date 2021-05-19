@@ -1,4 +1,4 @@
-const { getRandomQuote } = require('./handler');
+const { getRandomQuote, getVnDataById } = require('./handler');
 
 const routes = [
   {
@@ -8,8 +8,8 @@ const routes = [
   },
   {
     method: 'GET',
-    path: '/vn',
-    handler : () => {},
+    path: '/vn/{id}',
+    handler : getVnDataById,
   },
   {
     method: 'GET',
