@@ -1,15 +1,16 @@
-const vndbGetResponse  = require('./vndb-handler');
+const { vndbGetResponse, vnLength }  = require('./vndb-handler');
 
 const getRandomQuote = async (_, h) => {
   try {
-    const data = await vndbGetResponse('get quote basic (id>=1) {"results":1}');
+    const resData = await vndbGetResponse('get quote basic (id>=1) {"results":1}');
+    const data = resData.items[0];
     const response = h.response({
       status: 'success',
       message: 'get quote successfully',
       data: {
-        title: data.items[0].title,
-        quote: data.items[0].quote,
-        id: data.items[0].id,
+        title: data.title,
+        quote: data.quote,
+        id: data.id,
       },
     });
     response.code(200);
@@ -43,6 +44,7 @@ const getVnDataById = async (request, h) => {
       title: data.title,
       original: data.original,
       released: data.released,
+      length: vnLength[data.length],
       image: data.image,
       description: data.description,
     }
