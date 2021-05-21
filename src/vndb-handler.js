@@ -37,7 +37,7 @@ async function test() {
   //response = await vndbGetResponse(`get vn basic,details (id=${id})`);
   //console.log(response.items[0].description);
   const name = 'a';
-  const resData = await vndbGetResponse(`get vn basic,details (title~"${name}")`);
+  const resData = await vndbGetResponse(`get vn basic,details (search~"${name}")`);
   console.log(resData);
 }
 
