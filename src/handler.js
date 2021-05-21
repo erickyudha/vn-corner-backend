@@ -73,7 +73,7 @@ const getVnDataById = async (request, h) => {
 const searchVnByName = async (request, h) => {
   try {
     const { name } = request.params;
-    const resData = await vndbGetResponse(`get vn basic,details (title~"${name}")`);
+    const resData = await vndbGetResponse(`get vn basic,details (search~"${name}") {"results":24}`);
     if (resData.num == 0) {
       const response = h.response({
         status: 'fail',

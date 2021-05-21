@@ -28,7 +28,7 @@ async function vndbGetResponse(query) {
 
 
 //-----------------------------------------------------------------------------------------
-const DEBUG = true;
+const DEBUG = false;
 
 async function test() {
   //let response = await vndbGetResponse('get quote basic (id>=1) {"results":1}');
@@ -36,9 +36,13 @@ async function test() {
   //const id = 29667;
   //response = await vndbGetResponse(`get vn basic,details (id=${id})`);
   //console.log(response.items[0].description);
-  const name = 'einstein';
-  const resData = await vndbGetResponse(`get vn basic,details (search~"${name}")`);
-  console.log(resData.items);
+  try {
+    const name = 'einstein';
+    const resData = await vndbGetResponse(`get quote basic (id>=1) {"results":25}`);
+    console.log(resData.items);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 if (DEBUG) {
