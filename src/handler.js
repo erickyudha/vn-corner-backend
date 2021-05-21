@@ -47,7 +47,8 @@ const getVnDataById = async (request, h) => {
       length: vnLength[data.length - 1],
       image: data.image,
       description: data.description,
-    }
+      aliases: data.aliases,
+    };
 
     const response = h.response({
       status: 'success',
