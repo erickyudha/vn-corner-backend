@@ -33,9 +33,12 @@ const DEBUG = false;
 async function test() {
   //let response = await vndbGetResponse('get quote basic (id>=1) {"results":1}');
   //console.log(response);
-  const id = 29667;
-  response = await vndbGetResponse(`get vn basic,details (id=${id})`);
-  console.log(response.items[0].description);
+  //const id = 29667;
+  //response = await vndbGetResponse(`get vn basic,details (id=${id})`);
+  //console.log(response.items[0].description);
+  const name = 'a';
+  const resData = await vndbGetResponse(`get vn basic,details (title~"${name}")`);
+  console.log(resData);
 }
 
 if (DEBUG) {

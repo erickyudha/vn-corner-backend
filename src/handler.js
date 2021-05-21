@@ -69,9 +69,49 @@ const getVnDataById = async (request, h) => {
   }
 };
 
+const searchVnByName = async (request, h) => {
+  try {
+    const { name } = request.params;
+    const resData = await vndbGetResponse(`get vn basic,details (title~"${name}")`);
+    if (resData.num == 0) {
+      const response = h.response({
+        status: 'fail',
+        message: `vn by the name "${name}" not found`,
+      });
+      response.code(404);
+      return response;
+    }
+    const data = resData.items;
+    const newData = [];
+    data.forEach(vn => {
+      newData.push({
+        title: vn.title,
+        id: vn.id,
+        image: vn.image,
+      });
+    });
+    const response = h.response({
+      status: 'success',
+      message: 'search vn successfully',
+      data: newData,
+    });
+    response.code(200);
+    return response;
+  } catch (error) {
+    console.log(error);
+    const response = h.response({
+      status: 'fail',
+      message: 'something went wrong',
+    });
+    response.code(400);
+    return response;
+  };
+};
+
 module.exports = {
   getRandomQuote,
   getVnDataById,
+  searchVnByName,
 };
 
 
