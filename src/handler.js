@@ -48,6 +48,7 @@ const getVnDataById = async (request, h) => {
       image: data.image,
       description: data.description,
       aliases: data.aliases,
+      nsfw: data.image_nsfw,
     };
 
     const response = h.response({
@@ -89,6 +90,7 @@ const searchVnByName = async (request, h) => {
         title: vn.title,
         id: vn.id,
         image: vn.image,
+        nsfw: vn.image_nsfw,
       });
     });
     const response = h.response({
